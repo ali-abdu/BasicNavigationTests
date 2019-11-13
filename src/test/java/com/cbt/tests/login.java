@@ -52,6 +52,7 @@ public class login {
     public void inValidLogin() {
         System.out.println("Invalid ");
     }
+    System.out.println();
 }
 
 

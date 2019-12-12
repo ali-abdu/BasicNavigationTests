@@ -1,14 +1,15 @@
-package com.cbt.utilities;
+package com.cbt.tests.OldHomeworks;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
+import com.cbt.utilities.WebDriverFactory;
+
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 
 import java.util.Arrays;
 import java.util.List;
 
 public class TitleVerification2 {
+
+    private static WebDriverFactory WebdriverFactory;
 
     public static void main(String[] args) throws InterruptedException {
 
@@ -26,7 +27,7 @@ public class TitleVerification2 {
 
 
     public static void test1(String url) throws InterruptedException {
-        WebDriver driver = BrowserFactory.getDriver("chrome");
+        WebDriver driver = WebdriverFactory.getDriver("chrome");
         driver.get(url);
      //   String title = driver.getTitle();
 //        StringBuffer sb = new StringBuffer();

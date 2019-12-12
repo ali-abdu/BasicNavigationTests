@@ -1,15 +1,15 @@
-package com.cbt.utilities;
+package com.cbt.tests.OldHomeworks;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
+import com.cbt.utilities.WebDriverFactory;
+
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class TitleVerification3 {
+    private static WebDriverFactory WebdriverFactory;
+
     public static void main(String[] args) throws InterruptedException {
 
 List<String> urls= Arrays.asList("http://practice.cybertekschool.com/","http://practice.cybertekschool.com/dropdown","http://practice.cybertekschool.com/login",
@@ -23,7 +23,7 @@ List<String> urls= Arrays.asList("http://practice.cybertekschool.com/","http://p
     }
 
     public static void test(String url){
-        WebDriver driver=BrowserFactory.getDriver("chrome");
+        WebDriver driver= WebdriverFactory.getDriver("chrome");
         driver.get(url);
 
         System.out.println(driver.getTitle());

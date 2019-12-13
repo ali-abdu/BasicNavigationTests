@@ -9,5 +9,8 @@
         <module name="BasicNavigationTests" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="BasicNavigationTests" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>

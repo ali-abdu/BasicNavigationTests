@@ -1,13 +1,12 @@
 package com.cbt.pages;
 
-
 import com.cbt.utilities.Driver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
-public class CreateCalendarEventsPage extends BasePage {
+public class CreateCalendarEventsPage extends BasePage  {
 
     public CreateCalendarEventsPage(){
         PageFactory.initElements(Driver.get(), this);
@@ -18,6 +17,7 @@ public class CreateCalendarEventsPage extends BasePage {
 
     @FindBy(css = "[id^='recurrence-repeats-view']")
     public WebElement repeatOptions;
+
     @FindBy(className = "select2-chosen")
     public WebElement selectedOwner;
 
@@ -50,19 +50,31 @@ public class CreateCalendarEventsPage extends BasePage {
     @FindBy(xpath = "(//input[@type='radio'])[5]")
     public WebElement by;
 
+    @FindBy(xpath="(//input[@placeholder='Choose a date'])[3]")
+    public WebElement byChoosedate;
+
+    @FindBy(xpath = "//select[@class='ui-datepicker-year']/option[@value='2021']")
+    public WebElement byClickOnYear;
+    @FindBy(xpath="(//table/tbody/tr/td/a)[18]")
+    public WebElement Dates;
+
+    @FindBy(xpath = "//select[@class='ui-datepicker-month']/option[11]")
+    public WebElement ByMonth;
+
     @FindBy(xpath = "(//input[@type='checkbox'])")
     public WebElement AllDayEvent;
 
     @FindBy(xpath = "//select/option[@value='daily']")
     public WebElement Daily;
 
-    @FindBy(xpath = "(//select[@id='recurrence-repeats-view101'])")
-    public WebElement Repeats;
+    @FindBy(xpath="//input[@checked='checked']")
+    public WebElement RepeatEvery;
 
+    @FindBy(xpath = "//div[@class='control-group recurrence-summary alert-info']")
+    public WebElement Summary;
 
-
-
-
+    @FindBy(xpath="(//input[@class='recurrence-subview-control__number'])[7]")
+    public  WebElement nOfOccurences;
 
     public Select repeatOptionsList(){
         return new Select(repeatOptions);

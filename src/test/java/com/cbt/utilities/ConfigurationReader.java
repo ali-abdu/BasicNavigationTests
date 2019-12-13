@@ -1,5 +1,6 @@
 package com.cbt.utilities;
 
+
 import java.io.FileInputStream;
 import java.util.Properties;
 
@@ -7,19 +8,18 @@ import java.util.Properties;
  * reads the properties file configuration.properties
  */
 public class ConfigurationReader {
-
     private static Properties properties;
-    //  /Users/cybertekschool/IdeaProjects/Summer2019VATestNGSeleniumProject/src/test/java/com/cybertek/tests/d16_pom_2/PageSubtitlesTest.java
+
     static {
 
         try {
-            // what file to read
+            //what file to read
             String path = "configuration.properties";
-            // read the file into java, finds the file using the string path
+            //read the file into java,find the file using the string path
             FileInputStream input = new FileInputStream(path);
-            // properties --> class that store properties in key / value format
+            //properties class that loads properties in key/value format
             properties = new Properties();
-            // the values from the file input is loaded / fed in to the properties object
+            //the values from the file input is loaded/
             properties.load(input);
 
             input.close();
@@ -32,6 +32,5 @@ public class ConfigurationReader {
     public static String get(String keyName) {
         return properties.getProperty(keyName);
     }
-
 
 }

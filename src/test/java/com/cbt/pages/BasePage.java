@@ -1,5 +1,6 @@
 package com.cbt.pages;
 
+
 import com.cbt.utilities.BrowserUtils;
 import com.cbt.utilities.Driver;
 import org.openqa.selenium.By;
@@ -11,8 +12,11 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.awt.peer.TextComponentPeer;
+
 public abstract class BasePage {
 
+    public TextComponentPeer userName;
     @FindBy(css = "div[class='loader-mask shown']")
     @CacheLookup
     protected WebElement loaderMask;
@@ -21,7 +25,7 @@ public abstract class BasePage {
     protected WebElement pageSubTitle;
 
     @FindBy(css = "#user-menu > a")
-    protected WebElement userName;
+    public WebElement username;
 
     @FindBy(linkText = "Logout")
     public WebElement logOutLink;
@@ -61,7 +65,7 @@ public abstract class BasePage {
 
     public String getUserName(){
         waitUntilLoaderScreenDisappear();
-        BrowserUtils.waitForVisibility(userName, 5);
+        BrowserUtils.waitForVisibility(username, 5);
         return userName.getText();
     }
 
@@ -69,12 +73,12 @@ public abstract class BasePage {
 
     public void logOut(){
         BrowserUtils.waitFor(2);
-        BrowserUtils.clickWithJS(userName);
+        BrowserUtils.clickWithJS(username);
         BrowserUtils.clickWithJS(logOutLink);
     }
     public void goToMyUser(){
         waitUntilLoaderScreenDisappear();
-        BrowserUtils.waitForClickablility(userName, 5).click();
+        BrowserUtils.waitForClickablility(username, 5).click();
         BrowserUtils.waitForClickablility(myUser, 5).click();
 
     }
@@ -109,4 +113,3 @@ public abstract class BasePage {
     }
 
 }
-

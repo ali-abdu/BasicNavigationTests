@@ -1,6 +1,5 @@
 package com.cbt.tests;
 
-
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
@@ -12,19 +11,19 @@ import org.openqa.selenium.interactions.Actions;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
 
+
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
-public abstract class TestBase {
-
+public class TestBase {
     protected WebDriver driver;
 
     protected String url;
     Actions actions;
-
     protected ExtentReports report;
     protected ExtentHtmlReporter htmlReporter;
     protected ExtentTest extentLogger;
+
 
     @BeforeTest
     public void setUpTest() {
@@ -35,15 +34,15 @@ public abstract class TestBase {
 
         htmlReporter.config().setReportName("Regression tests");
 
-        report.setSystemInfo("Environment", "QA");
+        report.setSystemInfo("Enviroment","QA");
         report.setSystemInfo("Browser", ConfigurationReader.get("browser"));
-        report.setSystemInfo("OS", System.getProperty("os.name"));
+        report.setSystemInfo("OS",System.getProperty("os.name"));
 
     }
-
     @AfterTest
     public void tearDownTest(){
         report.flush();
+
     }
 
     @BeforeMethod
@@ -53,30 +52,39 @@ public abstract class TestBase {
         url = ConfigurationReader.get("url");
         driver.get(url);
         actions = new Actions(driver);
-        driver.manage().window().maximize();
+
+
     }
 
+
     @AfterMethod
-    public void teardown(ITestResult result) throws InterruptedException, IOException {
-        // IF FAILED TAKE SCREENSHOT
-        if(result.getStatus() == ITestResult.FAILURE){
-            // record the name of the failed testcase
+    public void teardownMethod(ITestResult result) throws InterruptedException, IOException {
+        //ITestResult result this is a class from testNG
+        // it contains information about currecnt r@Test test case in testng
+        //if failed take screenshot
+        if(result.getStatus()==ITestResult.FAILURE){
+            //record the name of the failed testcase
             extentLogger.fail(result.getName());
-            // take screenshot and return location of the screenshot
+            //take screenshot and return the location of the screenshot
             String screenshot = BrowserUtils.getScreenshot(result.getName());
             extentLogger.addScreenCaptureFromPath(screenshot);
-            // capture the exception
+            //capture the sxception
             extentLogger.fail(result.getThrowable());
-        } else if (result.getStatus() == ITestResult.SKIP) {
-            // sometime tests are skipped, this is how we log skipped tests
+
+        }else if(result.getStatus()==ITestResult.SKIP){
+            //sometime tests are skipped,this is how we log skipped tests
             extentLogger.skip("Test Skipped: " + result.getName());
+
         }
 
-
-        // CLOSE BROWSER
-        Thread.sleep(1000);
+        Thread.sleep(3000);
         Driver.closeDriver();
     }
 
+//    @Test
+//    public void repeatOptionTest() {
+//
+//    }
 
 }
+

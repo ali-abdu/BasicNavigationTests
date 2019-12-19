@@ -4,6 +4,7 @@ import com.cbt.pages.*;
 import com.cbt.pages.DashboardPage;
 import com.cbt.pages.LoginPage;
 import com.cbt.tests.TestBase;
+import com.cbt.utilities.BrowserUtils;
 import com.cbt.utilities.ConfigurationReader;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
@@ -103,15 +104,20 @@ public class TestCase7Until12 extends TestBase{
         createCalendarEventsPage.repeat.click();
 
         createCalendarEventsPage.by.click();
+        BrowserUtils.waitFor(2);
         createCalendarEventsPage.byChoosedate.click();
 
         Select year=new Select(createCalendarEventsPage.byClickOnYear);
-        year.selectByVisibleText("2021");
+
+        year.selectByValue("2021");
         System.out.println(year.getFirstSelectedOption().getText());
         Select month=new Select(createCalendarEventsPage.ByMonth);
-        month.selectByVisibleText("Nov");
+
+        month.selectByValue("10");
         System.out.println(month.getFirstSelectedOption().getText());
 
+
+        createCalendarEventsPage.date18.click();
 
 
     }

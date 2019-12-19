@@ -18,6 +18,9 @@ public class CreateCalendarEventsPage extends BasePage  {
     @FindBy(css = "[id^='recurrence-repeats-view']")
     public WebElement repeatOptions;
 
+    @FindBy(xpath="(//select[@id='recurrence-repeats-view745'])/option[2]")
+    public WebElement Weekly;
+
     @FindBy(className = "select2-chosen")
     public WebElement selectedOwner;
 
@@ -53,13 +56,19 @@ public class CreateCalendarEventsPage extends BasePage  {
     @FindBy(xpath="(//input[@placeholder='Choose a date'])[3]")
     public WebElement byChoosedate;
 
-    @FindBy(xpath = "//select[@class='ui-datepicker-year']/option[@value='2021']")
+//    @FindBy(xpath = "//select[@class='ui-datepicker-year']/option[@value='2021']")
+    @FindBy(xpath="//select[@data-handler='selectYear']")
     public WebElement byClickOnYear;
     @FindBy(xpath="(//table/tbody/tr/td/a)[18]")
     public WebElement Dates;
 
-    @FindBy(xpath = "//select[@class='ui-datepicker-month']/option[11]")
+//    @FindBy(xpath = "//select[@class='ui-datepicker-month']/option[11]")
+    @FindBy(xpath="//select[@data-handler='selectMonth']")
     public WebElement ByMonth;
+
+//    @FindBy(xpath="//a[text()='18']")
+    @FindBy(xpath="//tr[3]//td[5]")
+    public WebElement date18;
 
     @FindBy(xpath = "(//input[@type='checkbox'])")
     public WebElement AllDayEvent;
